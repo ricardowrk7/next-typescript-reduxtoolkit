@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import styles from "./Header.module.css";
 
 interface Props {}
 
@@ -19,21 +20,30 @@ const Header = (props: Props) => {
     return () => window.removeEventListener("scroll", listenScrollEvent);
   }, []);
   return (
-    <header className={`${header ? "bg-yellow-400" : "bg-lime-100"} flex justify-center` } >
-      <div className={` container flex py-6`}>
-        <div>logo</div>
-        <div className="flex flex-1">
+    <>
+      <header
+        className={`${
+          header ? "bg-main" : "bg-lime-100"
+        } flex justify-center`}
+      >
+        <div className={` container flex py-6`}>
+          <div>logo</div>
+          <div className="flex flex-1">
             <nav className="w-full">
-                <ul className="flex justify-end w-full">
-                    <li className="mr-6">signup</li>
-                    <li className="mr-6">login</li>
-                    <li className="mr-6">order</li>
-                    <li>basket</li>
-                </ul>
+              <ul className="flex justify-end w-full">
+                <li className="mr-6">signup</li>
+                <li className="mr-6">login</li>
+                <li className="mr-6">order</li>
+                <li>basket</li>
+              </ul>
             </nav>
+          </div>
         </div>
-      </div>
-    </header>
+      </header>
+     
+        <div className={styles.background}></div>
+     
+    </>
   );
 };
 
