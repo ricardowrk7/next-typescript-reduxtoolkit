@@ -9,7 +9,7 @@ type Props={
 }
 
 export default function Home({data}:Props) {
-  console.log(data)
+
   return (
     <div >
       <Head>
@@ -20,7 +20,7 @@ export default function Home({data}:Props) {
       <Header/>
       <div className='container mx-auto'>
       <Products allProducts={data}/>
-      kkkkkkkkkkkkkkkkk
+     
       </div>
     </div>
   )

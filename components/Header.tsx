@@ -24,7 +24,7 @@ const Header = (props: Props) => {
       <header
         className={`${
           header ? "bg-main" : "bg-lime-100"
-        } flex justify-center`}
+        } flex justify-center sticky top-0 z-10`}
       >
         <div className={` container flex py-6`}>
           <div>logo</div>
