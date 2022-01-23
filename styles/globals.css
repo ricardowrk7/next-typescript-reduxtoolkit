@@ -13,7 +13,7 @@
 }
 
 .Flipped::-webkit-scrollbar-track{
-    -webkit-box-shadow: inset 0 0 1px rgba(0,0,0,0.3);
+  
  
     background: rgb(223, 227, 230);
     border-radius: 10px;
@@ -23,10 +23,9 @@
     border-radius:10px;
     height: 30px;
     width: 8px;
-    border: 1px solid black;
+  
     background: rgb(19, 18, 18);
-    -webkit-box-shadow: 0 1px 1px rgb(0,0,0);
-    background: -webkit-linear-gradient(rgb(15, 15, 15), rgb(32, 28, 28));
+  
 }
 
 .Flipped::-webkit-scrollbar-track-piece {
