@@ -1,7 +1,15 @@
 import Head from 'next/head'
 import Header from '../components/Header'
+import Products from '../components/products';
 
-export default function Home() {
+import { commerce } from "../lib/commerce";
+
+type Props={
+  data:any
+}
+
+export default function Home({data}:Props) {
+  console.log(data)
   return (
     <div >
       <Head>
@@ -10,6 +18,19 @@ export default function Home() {
       </Head>
 
       <Header/>
+      <div className='container mx-auto'>
+      <Products allProducts={data}/>
+      kkkkkkkkkkkkkkkkk
+      </div>
     </div>
   )
+}
+
+export const getStaticProps = async () => {
+  const { data } = await commerce.products.list();
+  return {
+      props:{
+          data
+      }
+  }
 }
