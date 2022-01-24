@@ -1,10 +1,11 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { basketItem } from "../model/basketItem";
 import type { RootState } from "./store";
 
 // Define a type for the slice state
 interface basketType {
   cartItems:
-    | { name: string; price: number; category: string; qty: number }[]
+    | basketItem
     | null;
 }
 
@@ -17,9 +18,9 @@ export const basketSlice = createSlice({
 
   initialState,
   reducers: {
-    addToCart: (state, action: PayloadAction<number>) => {},
-    decreaseQty: (state, action: PayloadAction<number>) => {},
-    increaseQty: (state, action: PayloadAction<number>) => {},
+    addToCart: (state, action: PayloadAction<basketItem>) => {},
+    decreaseQty: (state, action:PayloadAction<basketItem> ) => {},
+    increaseQty: (state, action:PayloadAction<basketItem> ) => {},
   },
 });
 
