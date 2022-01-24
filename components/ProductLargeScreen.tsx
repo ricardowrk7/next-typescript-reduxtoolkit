@@ -1,5 +1,6 @@
 import { ShoppingCartIcon } from "@heroicons/react/solid";
 import Image from "next/image";
+import { addToCart } from "../redux/basketSlice";
 import { useAppDispatch } from "../useHook/useReduxHook";
 
 type Props={
@@ -8,10 +9,10 @@ type Props={
 const ProductLargeScreen=({foodOptions}:Props)=>{
     const dispatch = useAppDispatch()
     const addToCartHandler=(item:any)=>{
-  
+     dispatch(addToCart({name:item.name,category:item.categories[0].slug,price:item.price,qty:1,id:item.id}))
     }
     return(
-        <div className="flex  Flipped my-5 justify-between overflow-x-scroll px-5 py-5 space-x-5">
+        <div className="flex  Flipped my-5  overflow-x-scroll px-5 py-5 space-x-5">
         {foodOptions?.map((item: any) => {
           return (
             <div

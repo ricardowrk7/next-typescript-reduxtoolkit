@@ -10,7 +10,7 @@ interface basketType {
 }
 
 const initialState: basketType = {
-  cartItems: null,
+  cartItems: [],
 };
 
 export const basketSlice = createSlice({
@@ -18,7 +18,9 @@ export const basketSlice = createSlice({
 
   initialState,
   reducers: {
-    addToCart: (state, action: PayloadAction<basketItem>) => {},
+    addToCart: (state, action: PayloadAction<basketItem>) => {
+      state.cartItems?.push(action.payload)
+    },
     decreaseQty: (state, action:PayloadAction<basketItem> ) => {},
     increaseQty: (state, action:PayloadAction<basketItem> ) => {},
   },

@@ -1,1 +1,1 @@
-export type basketItem={ name: string; price: number; category: string; qty: number }
+export type basketItem={ name: string; price: number; category: string; qty: number,id:string }
