@@ -1,10 +1,15 @@
 import { ShoppingCartIcon } from "@heroicons/react/solid";
 import Image from "next/image";
+import { useAppDispatch } from "../useHook/useReduxHook";
 
 type Props={
     foodOptions:any
 }
 const ProductLargeScreen=({foodOptions}:Props)=>{
+    const dispatch = useAppDispatch()
+    const addToCartHandler=(item:any)=>{
+  
+    }
     return(
         <div className="flex  Flipped my-5 justify-between overflow-x-scroll px-5 py-5 space-x-5">
         {foodOptions?.map((item: any) => {
@@ -23,7 +28,7 @@ const ProductLargeScreen=({foodOptions}:Props)=>{
                 <p className="text-md mt-2" dangerouslySetInnerHTML={{ __html: item.description }} />
                 <div className="flex justify-between mt-2">
                   <p className="font-semibold">{item.categories[0].slug}</p>
-                  <div className="border-2 py-1 px-2 group hover:bg-yellow-400 flex justify-center space-x-4 rounded-md border-yellow-400 ">
+                  <div onClick={()=>addToCartHandler(item)} className="border-2 py-1 px-2 group hover:bg-yellow-400 flex justify-center space-x-4 rounded-md border-yellow-400 ">
                     <span className="text-gray-700 group-hover:text-teal-900">
                       add to cart
                     </span>
