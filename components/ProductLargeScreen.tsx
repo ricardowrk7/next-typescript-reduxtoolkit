@@ -9,7 +9,8 @@ type Props={
 const ProductLargeScreen=({foodOptions}:Props)=>{
     const dispatch = useAppDispatch()
     const addToCartHandler=(item:any)=>{
-     dispatch(addToCart({name:item.name,category:item.categories[0].slug,price:item.price,qty:1,id:item.id}))
+      console.log(item)
+     dispatch(addToCart({name:item.name,category:item.categories[0].slug,price:item.price.raw,qty:1,id:item.id,src:item.media.source}))
     }
     return(
         <div className="flex  Flipped my-5  overflow-x-scroll px-5 py-5 space-x-5">

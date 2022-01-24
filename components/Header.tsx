@@ -2,12 +2,14 @@ import { useState, useEffect } from "react";
 import styles from "./Header.module.css";
 import { ShoppingBagIcon } from "@heroicons/react/solid";
 import Link from "next/link";
+import { useAppSelector } from "../useHook/useReduxHook";
+import { stat } from "fs";
 
 interface Props {}
 
 const Header = (props: Props) => {
   const [header, setHeader] = useState<boolean>(true);
-
+  const state = useAppSelector((state) => state.basket);
   const listenScrollEvent = (event: any) => {
     if (window.scrollY < 150) {
       return setHeader(true);
@@ -36,21 +38,23 @@ const Header = (props: Props) => {
                 <li className="mr-6">signup</li>
                 <li className="mr-6">login</li>
                 <li className="mr-6">order</li>
-                <li><Link href="/basket">
-                  <span className="relative">
-                  <ShoppingBagIcon className="h-8 w-8" />
-                  <span className="absolute -bottom-4 left-6 bg-red-600 text-white  w-5 h-5 flex justify-center items-center rounded-full    ">2</span>
-                  </span>
-                  
-                  </Link></li>
+                <li>
+                  <Link href="/Basket">
+                    <span className="relative">
+                      <ShoppingBagIcon className="h-8 w-8" />
+                      <span className="absolute -bottom-4 left-6 bg-red-600 text-white  w-5 h-5 flex justify-center items-center rounded-full    ">
+                        {state.cartItems?.length! >0 && state.cartItems?.length}
+                      </span>
+                    </span>
+                  </Link>
+                </li>
               </ul>
             </nav>
           </div>
         </div>
       </header>
-     
-        <div className={styles.background}></div>
-     
+
+      <div className={styles.background}></div>
     </>
   );
 };
