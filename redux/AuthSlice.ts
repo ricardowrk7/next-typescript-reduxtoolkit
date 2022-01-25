@@ -1,38 +1,54 @@
-import { AsyncThunk, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import {
+  AsyncThunk,
+  createAsyncThunk,
+  createSlice,
+ 
+} from "@reduxjs/toolkit";
+import { getCookie, setCookie } from 'typescript-cookie'
 import axios from "axios";
+import { AnyMessageParams } from "yup/lib/types";
+import userType from "../model/userModel";
 import user from "../model/userModel";
 
-type state={
-    userInfo:user,
-    loading:boolean,
-    erroeMessage:string,
-    successMessage:string
-}
+type ServerError=string
 
-const initialState:state = {
-    userInfo: {
-      name: "",
-      email: "",
-      token: "",
-    },
-    loading: false,
-    erroeMessage: "",
-    successMessage: "",
-  };
+type state = {
+  userInfo: user;
+  loading: boolean;
+  erroeMessage: string;
+  successMessage: string;
+};
 
-export const signup: AsyncThunk<any, void, {}> = createAsyncThunk(
-  "auth/signup",
-  async (user, { rejectWithValue }) => {
-    try {
-      const { data } = await axios.post(
-        "https://api.freerealapi.com/auth/register",
-        user
-      );
-      if (data) {
-      }
-    } catch (error) {}
+const initialState: state = {
+  userInfo: {
+    name: "",
+    email: "",
+    token: "",
+  },
+  loading: false,
+  erroeMessage: "",
+  successMessage: "",
+};
+
+export const signup: AsyncThunk<
+  any,
+  user,
+  {
+    rejectValue: ServerError;
   }
-);
+> = createAsyncThunk("auth/signup", async (user, { rejectWithValue }) => {
+  try {
+    const { data } = await axios.post(
+      "https://api.freerealapi.com/auth/register",
+      user
+    );
+    setCookie('userInfo', JSON.stringify({...user,token:data.token}))
+    return {...user,token:data.token}
+   
+  } catch (error: any) {
+    return rejectWithValue(error.response.data.message);
+  }
+});
 
 export const login: AsyncThunk<any, void, {}> = createAsyncThunk(
   "auth/login",
@@ -56,25 +72,31 @@ const AuthSlice = createSlice({
   initialState,
 
   reducers: {
-    loginByLocalStorage: (state, { payload }) => {
-      state.userInfo = payload;
+    loginByCookies: (state, { payload }) => {
+      state.userInfo.name=payload.name
+      state.userInfo.email=payload.email
+      state.userInfo.token=payload.token
+      state.successMessage="you signedup"
     },
   },
 
   extraReducers: (builder) => {
-    // The `builder` callback form is used here because it provides correctly typed reducers from the action creators
     builder.addCase(signup.pending, (state, { payload }) => {
-
-    })
+      state.loading = true;
+    });
     builder.addCase(signup.fulfilled, (state, { payload }) => {
-
-    })
+      state.loading = false;
+      state.successMessage="you success fully signedup"
+      state.userInfo=payload
+      
+    });
     builder.addCase(signup.rejected, (state, action) => {
-     
-    })
+      state.loading = false;
+      state.erroeMessage = action.payload!;
+    });
   },
 });
 
 export default AuthSlice.reducer;
 
-export const { loginByLocalStorage } = AuthSlice.actions;
+export const { loginByCookies } = AuthSlice.actions;

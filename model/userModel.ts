@@ -1,3 +1,3 @@
-type user={name:string,email:string,password?:string,token?:string}
+type userType={name:string,email:string,password?:string,token?:string}
 
-export default user
+export default userType
