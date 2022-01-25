@@ -7,9 +7,12 @@ import Header from "../components/Header";
 import user from "../model/userModel";
 import { useAppDispatch, useAppSelector } from "../useHook/useReduxHook";
 import { signup } from "../redux/AuthSlice";
+import { useRouter } from "next/router";
 
 const SignUp = () => {
   const dispatch = useAppDispatch();
+  const state = useAppSelector((state) => state.user);
+  const Router = useRouter();
   const formik = useFormik<{
     name: string;
     email: string;
@@ -35,8 +38,6 @@ const SignUp = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-
-    console.log("dddddd");
     dispatch(
       signup({
         name: formik.values.name,
@@ -44,10 +45,14 @@ const SignUp = () => {
         password: formik.values.password,
       })
     );
+   
   };
-
-  const state=useAppSelector(state=>state.user)
-
+  if (state.successMessage) {
+    Router.push({
+        pathname: '/',
+        query: { name: 'Someone' }
+    })
+}
   return (
     <div>
       <Header bg={false} />
@@ -56,12 +61,16 @@ const SignUp = () => {
           {" "}
           <h1 className="my-5 font-bold text-4xl text-gray-600">SignUp</h1>
         </div>
-        {state.successMessage && <div>
+        {state.successMessage && (
+          <div>
             <h1>{state.successMessage}</h1>
-            </div>}
-            {state.erroeMessage && <div>
+          </div>
+        )}
+        {state.erroeMessage && (
+          <div>
             <h1>{state.erroeMessage}</h1>
-            </div>}
+          </div>
+        )}
         <form onSubmit={handleSubmit}>
           <div className="mt-6">
             <Input name="name" label="name" formik={formik} />

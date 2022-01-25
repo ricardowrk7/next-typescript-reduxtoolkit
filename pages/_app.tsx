@@ -8,12 +8,8 @@ import { useAppDispatch } from '../useHook/useReduxHook'
 import { loginByCookies } from '../redux/AuthSlice'
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const dispatch=useAppDispatch()
- useEffect(()=>{
- const data=getCookie("userInfo")
- const paresedData=JSON.parse(data!)
- dispatch(loginByCookies(data))
- },[])
+  
+ 
   return (
     <Provider store={store}>
       <Component {...pageProps} />

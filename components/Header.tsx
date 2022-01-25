@@ -8,11 +8,13 @@ import Image from "next/image";
 
 interface Props {
   bg: boolean;
+ 
 }
 
 const Header = ({ bg }: Props) => {
   const [header, setHeader] = useState<boolean>(true);
   const state = useAppSelector((state) => state.basket);
+  const userData = useAppSelector((state) => state.user);
   const listenScrollEvent = (event: any) => {
     if (window.scrollY < 150) {
       return setHeader(true);
@@ -42,8 +44,10 @@ const Header = ({ bg }: Props) => {
           <div className="flex flex-1">
             <nav className="w-full">
               <ul className="flex justify-end items-center w-full">
-                <li className="mr-6 cursor-pointer"><Link href="SignUp">signup</Link></li>
+           {userData.userInfo.name?<li>{userData.userInfo.name}</li>:<>
+           <li className="mr-6 cursor-pointer"><Link href="SignUp">signup</Link></li>
                 <li className="mr-6 cursor-pointer">login</li>
+           </>}
                
                 <li className="cursor-pointer">
                   <Link href="/Basket">
