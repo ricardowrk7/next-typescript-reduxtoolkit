@@ -17,7 +17,7 @@ export default function Home({data}:Props) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Header/>
+      <Header bg={true}/>
       <div className='container mx-auto'>
       <Products allProducts={data}/>
      

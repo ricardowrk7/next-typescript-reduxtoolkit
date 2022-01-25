@@ -44,7 +44,7 @@ const ProductLargeScreen = ({ foodOptions }: Props) => {
                 <p className="font-semibold">{item.categories[0].slug}</p>
                 <div
                   onClick={() => addToCartHandler(item)}
-                  className="border-2 py-1 px-2 group hover:bg-yellow-400 flex justify-center space-x-4 rounded-md border-yellow-400 "
+                  className="border-2 py-1 px-2 group hover:bg-yellow-400 cursor-pointer flex justify-center space-x-4 rounded-md border-yellow-400 "
                 >
                   <span className="text-gray-700 group-hover:text-teal-900">
                     add to cart
