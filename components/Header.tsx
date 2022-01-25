@@ -44,7 +44,7 @@ const Header = ({ bg }: Props) => {
               <ul className="flex justify-end items-center w-full">
                 <li className="mr-6 cursor-pointer"><Link href="SignUp">signup</Link></li>
                 <li className="mr-6 cursor-pointer">login</li>
-                <li className="mr-6 cursor-pointer">order</li>
+               
                 <li className="cursor-pointer">
                   <Link href="/Basket">
                     <span className="relative">

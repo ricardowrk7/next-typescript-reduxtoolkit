@@ -4,6 +4,7 @@ import * as Yup from "yup";
 import { TextField } from "@mui/material";
 import Input from "../components/Input";
 import Header from "../components/Header";
+import user from "../model/userModel";
 
 const SignUp = () => {
   const formik =
@@ -31,17 +32,19 @@ const SignUp = () => {
     });
 
 
-    const handleSubmit=(values)=>{
-
+    const handleSubmit=(e:React.FormEvent)=>{
+        e.preventDefault()
+     console.log(formik.values)
+     console.log("dddddd")
     }
 
 
   return (
    <div>
        <Header bg={false}/>
-        <div className="w-full md:w-1/3  mx-auto px-5 border-2 border-yellow-400 mt-5 pb-5 rounded-md shadow-lg">
+        <div className="w-full md:w-1/3 border-0 shadow-none  mx-auto px-5 md:border-2 border-yellow-400 my-5 pb-5 rounded-md sm:shadow-lg">
        <div className="flex justify-center"> <h1 className="my-5 font-bold text-4xl text-gray-600">SignUp</h1></div>
-     <form onSubmit={formik.handleSubmit}>
+     <form onSubmit={handleSubmit}>
      <div className="mt-6">
        <Input name="name" label="name" formik={formik}/>
       </div>
