@@ -33,7 +33,7 @@ const Header = ({ bg }: Props) => {
     <>
       <header
         className={`${
-          header ? "bg-main" : "bg-lime-100"
+          header ? "bg-main" : "bg-white"
         } flex justify-center sticky top-0 z-10 `}
       >
         <div className={` container flex py-4 px-5 items-center`}>
