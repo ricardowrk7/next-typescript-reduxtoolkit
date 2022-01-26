@@ -50,7 +50,7 @@ const SignUp = () => {
   if (state.successMessage) {
     Router.push({
         pathname: '/',
-        query: { name: 'Someone' }
+       
     })
 }
   return (
