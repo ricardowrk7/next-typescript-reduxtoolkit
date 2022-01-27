@@ -7,7 +7,10 @@ import { decreaseQty, increaseQty } from "../redux/basketSlice";
 import Header from "../components/Header";
 import Link from "next/link";
 
+
 const Basket = () => {
+ 
+
   const state = useAppSelector((state) => state.basket);
   const dispatch=useAppDispatch()
   const increaseQtyHandler=(product:basketItem)=>{

@@ -52,7 +52,7 @@ const Header = ({ bg }: Props) => {
            
            </li>:<>
            <li className="mr-6 cursor-pointer"><Link href="SignUp">signup</Link></li>
-                <li className="mr-6 cursor-pointer">login</li>
+                <li className="mr-6 cursor-pointer"><Link href="Login">login</Link></li>
            </>}
                
                 <li className="cursor-pointer">

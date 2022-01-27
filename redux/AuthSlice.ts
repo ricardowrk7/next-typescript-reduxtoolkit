@@ -50,7 +50,9 @@ export const signup: AsyncThunk<
   }
 });
 
-export const login: AsyncThunk<any, void, {}> = createAsyncThunk(
+export const login: AsyncThunk<any, user, {
+  rejectValue: ServerError;
+}> = createAsyncThunk(
   "auth/login",
   async (user, { rejectWithValue }) => {
     try {
@@ -59,11 +61,12 @@ export const login: AsyncThunk<any, void, {}> = createAsyncThunk(
         "https://api.freerealapi.com/auth/login",
         user
       );
-      console.log(data);
-
-      if (data) {
-      }
-    } catch (error) {}
+      setCookie('userInfo', JSON.stringify({...user,token:data.token}))
+      return {...user,token:data.token}
+      
+    } catch (error:any) {
+      return rejectWithValue(error.response.data.message);
+    }
   }
 );
 
@@ -91,6 +94,19 @@ const AuthSlice = createSlice({
       
     });
     builder.addCase(signup.rejected, (state, action) => {
+      state.loading = false;
+      state.erroeMessage = action.payload!;
+    });
+    builder.addCase(login.pending, (state, { payload }) => {
+      state.loading = true;
+    });
+    builder.addCase(login.fulfilled, (state, { payload }) => {
+      state.loading = false;
+      state.successMessage="you success fully logedin"
+      state.userInfo=payload
+      
+    });
+    builder.addCase(login.rejected, (state, action) => {
       state.loading = false;
       state.erroeMessage = action.payload!;
     });
