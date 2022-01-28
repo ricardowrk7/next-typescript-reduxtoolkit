@@ -4,7 +4,7 @@ import {
   createSlice,
  
 } from "@reduxjs/toolkit";
-import { getCookie, setCookie,removeCookie } from 'typescript-cookie'
+import { getCookie, setCookie, removeCookie } from 'typescript-cookie'
 import axios from "axios";
 import { AnyMessageParams } from "yup/lib/types";
 import userType from "../model/userModel";
@@ -82,18 +82,16 @@ const AuthSlice = createSlice({
       state.successMessage="you signedup"
     },
     logoutUser: (state) => {
-      state={
-        userInfo: {
-          name: "",
-          email: "",
-          token: "",
-        },
-        loading: false,
-        erroeMessage: "",
-        successMessage: "",
-      }
+      removeCookie("userInfo")
+     state.userInfo.name=""
+     state.userInfo.email=""
+     state.userInfo.token=""
+     state.userInfo.password=""
+     state.successMessage=""
+     state.erroeMessage=""
     },
-    removeCookie("userInfo")
+    
+   
   },
 
   extraReducers: (builder) => {

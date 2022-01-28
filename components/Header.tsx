@@ -2,10 +2,11 @@ import { useState, useEffect } from "react";
 import styles from "./Header.module.css";
 import { ShoppingBagIcon } from "@heroicons/react/solid";
 import Link from "next/link";
-import { useAppSelector } from "../useHook/useReduxHook";
+import { useAppDispatch, useAppSelector } from "../useHook/useReduxHook";
 import { UserCircleIcon } from "@heroicons/react/outline";
 import { stat } from "fs";
 import Image from "next/image";
+import { logoutUser } from "../redux/AuthSlice";
 
 interface Props {
   bg: boolean;
@@ -15,6 +16,7 @@ const Header = ({ bg }: Props) => {
   const [header, setHeader] = useState<boolean>(true);
   const state = useAppSelector((state) => state.basket);
   const userData = useAppSelector((state) => state.user);
+  const dispatch=useAppDispatch()
   const listenScrollEvent = (event: any) => {
     if (window.scrollY < 150) {
       return setHeader(true);
@@ -29,7 +31,7 @@ const Header = ({ bg }: Props) => {
     return () => window.removeEventListener("scroll", listenScrollEvent);
   }, []);
   const logoutUserHandler=()=>{
-    
+   dispatch(logoutUser())
   }
   return (
     <>
@@ -53,7 +55,7 @@ const Header = ({ bg }: Props) => {
                       logout
                     </li>
                   <li className="mr-6 flex items-center">
-                    <span className="mr-2 font-semibold  ">
+                    <span className="mr-2 font-semibold  text-sm sm:text-base ">
                       welcome {userData.userInfo.name}
                     </span>
                     <span>
