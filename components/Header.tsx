@@ -28,6 +28,9 @@ const Header = ({ bg }: Props) => {
 
     return () => window.removeEventListener("scroll", listenScrollEvent);
   }, []);
+  const logoutUserHandler=()=>{
+    
+  }
   return (
     <>
       <header
@@ -45,6 +48,10 @@ const Header = ({ bg }: Props) => {
             <nav className="w-full">
               <ul className="flex justify-end items-center w-full">
                 {userData.userInfo.name ? (
+                  <>
+                   <li onClick={logoutUserHandler} className="mr-6 hover:bg-gray-600 hover:text-neutral-50 cursor-pointer px-3 py-1 border-2 border-gray-400 rounded-full">
+                      logout
+                    </li>
                   <li className="mr-6 flex items-center">
                     <span className="mr-2 font-semibold  ">
                       welcome {userData.userInfo.name}
@@ -53,6 +60,7 @@ const Header = ({ bg }: Props) => {
                       <UserCircleIcon className="h-8 w-8" />
                     </span>
                   </li>
+                  </>
                 ) : (
                   <>
                     <li className="mr-6 hover:bg-gray-600 hover:text-neutral-50 cursor-pointer px-3 py-1 border-2 border-gray-400 rounded-full">
