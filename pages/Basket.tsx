@@ -78,7 +78,7 @@ const Basket = () => {
           </button>
         ) : (
           <button
-            onClick={() => router.push({ pathname: "/SignUp" })}
+            onClick={() => router.push({ pathname: "/SignUp",query:{from:"/basket"} })}
             className="bg-yellow-400 px-8 py-2 rounded"
           >
             checkout

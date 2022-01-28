@@ -13,6 +13,8 @@ const SignUp = () => {
   const dispatch = useAppDispatch();
   const state = useAppSelector((state) => state.user);
   const Router = useRouter();
+  const query=Router.query
+  console.log(query)
   const formik = useFormik<{
     name: string;
     email: string;
@@ -48,10 +50,19 @@ const SignUp = () => {
    
   };
   if (state.successMessage) {
+   if(!query.from){
     Router.push({
-        pathname: '/',
-       
-    })
+      pathname: '/',
+     
+     
+  })
+   }else{
+    Router.push({
+      pathname: '/Checkout',
+     
+     
+  })
+   }
 }
   return (
     <div>

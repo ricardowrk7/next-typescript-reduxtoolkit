@@ -9,7 +9,6 @@ import Image from "next/image";
 
 interface Props {
   bg: boolean;
- 
 }
 
 const Header = ({ bg }: Props) => {
@@ -45,16 +44,26 @@ const Header = ({ bg }: Props) => {
           <div className="flex flex-1">
             <nav className="w-full">
               <ul className="flex justify-end items-center w-full">
-           {userData.userInfo.name?<li className="mr-6 flex items-center">
-           
-             <span className="mr-2 font-semibold  ">welcome {userData.userInfo.name}</span>
-             <span><UserCircleIcon className="h-8 w-8" /></span>
-           
-           </li>:<>
-           <li className="mr-6 cursor-pointer"><Link href="SignUp">signup</Link></li>
-                <li className="mr-6 cursor-pointer"><Link href="Login">login</Link></li>
-           </>}
-               
+                {userData.userInfo.name ? (
+                  <li className="mr-6 flex items-center">
+                    <span className="mr-2 font-semibold  ">
+                      welcome {userData.userInfo.name}
+                    </span>
+                    <span>
+                      <UserCircleIcon className="h-8 w-8" />
+                    </span>
+                  </li>
+                ) : (
+                  <>
+                    <li className="mr-6 hover:bg-gray-600 hover:text-neutral-50 cursor-pointer px-3 py-1 border-2 border-gray-400 rounded-full">
+                      <Link href="SignUp">signup</Link>
+                    </li>
+                    <li className="mr-6 hover:bg-gray-600 hover:text-neutral-50 cursor-pointer px-3 py-1 border-2 border-gray-400 rounded-full">
+                      <Link href="Login">login</Link>
+                    </li>
+                  </>
+                )}
+
                 <li className="cursor-pointer">
                   <Link href="/Basket">
                     <span className="relative">

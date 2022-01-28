@@ -10,7 +10,7 @@ const Checkout = () => {
      <h1 className="font-bold text-lg text-gray-500">thanks {userName} </h1>
       <h1 className="mt-4 font-bold text-zinc-600 ">
         your total price is
-        <span className=" text-gray-900 font-extrabold text-xl ">
+        <span className=" text-gray-900 ml-3 font-extrabold text-xl ">
           {totalPrice}$
         </span>
       </h1>
