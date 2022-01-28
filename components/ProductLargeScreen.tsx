@@ -22,7 +22,7 @@ const ProductLargeScreen = ({ foodOptions }: Props) => {
     );
   };
   return (
-    <div className="flex  Flipped my-5  overflow-x-scroll px-5 py-5 space-x-5">
+    <div className="flex  Flipped   overflow-x-scroll px-5 py-5 space-x-5">
       {foodOptions?.map((item: any) => {
         return (
           <div
@@ -41,7 +41,7 @@ const ProductLargeScreen = ({ foodOptions }: Props) => {
                 dangerouslySetInnerHTML={{ __html: item.description }}
               />
               <div className="flex justify-between mt-2">
-                <p className="font-semibold">{item.categories[0].slug}</p>
+                <p className="font-semibold">{item.price.raw}$</p>
                 <div
                   onClick={() => addToCartHandler(item)}
                   className="border-2 py-1 px-2 group hover:bg-yellow-400 cursor-pointer flex justify-center space-x-4 rounded-md border-yellow-400 "

@@ -38,7 +38,7 @@ const ProductSmallScreen=({foodOptions}:Props)=>{
 
                 <p className="text-sm mt-2" dangerouslySetInnerHTML={{ __html: item.description }} />
                 <div className="flex justify-between mt-2">
-                  <p className="text-semibold">{item.categories[0].slug}</p>
+                  <p className="text-semibold">{item.price.raw}$</p>
                   <div  onClick={() => addToCartHandler(item)} className="border-2 py-1 px-2 cursor-pointer group hover:bg-yellow-400 flex justify-center space-x-4 rounded-md border-yellow-400 ">
                     <span className="text-gray-700 group-hover:text-teal-900">
                       add to cart

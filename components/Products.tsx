@@ -28,15 +28,19 @@ const Products = ({ allProducts }: Props) => {
     <div>
       {size.width! >= 768 && (
         <div>
+          <h1 className="mt-5 text-gray-600 text-base font-bold">BreakFast : </h1>
          <ProductLargeScreen foodOptions={breakFast}  />
+         <h1 className="mt-5 text-gray-600 text-base font-bold ">Sandwiches : </h1>
          <ProductLargeScreen foodOptions={sandwiches}  />
 
         </div>
       )}
       {size.width! <= 768 && (
         <div>
-         <ProductSmallScreen foodOptions={breakFast} />
-         <ProductSmallScreen  foodOptions={sandwiches} />
+ <h1 className="mt-5 text-gray-600 text-base font-bold">BreakFast : </h1>
+         <ProductLargeScreen foodOptions={breakFast}  />
+         <h1 className="mt-5 text-gray-600 text-base font-bold ">Sandwiches : </h1>
+         <ProductLargeScreen foodOptions={sandwiches}  />
         
         </div>
       )}
