@@ -1,13 +1,17 @@
-import { configureStore } from '@reduxjs/toolkit'
+
 import basketReduce from './basketSlice'
 import userReducer from "./AuthSlice"
-// ...
+import { configureStore, MiddlewareArray, } from '@reduxjs/toolkit'
+
 
 export const store = configureStore({
+ 
   reducer: {
     basket:basketReduce,
-    user:userReducer
+    user:userReducer,
+   
   },
+ 
 })
 
 

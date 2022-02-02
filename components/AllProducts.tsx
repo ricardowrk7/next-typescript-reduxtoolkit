@@ -10,7 +10,7 @@ type Props = {
   allProducts: any;
 };
 
-const Products = ({ allProducts }: Props) => {
+const AllProducts = ({ allProducts }: Props) => {
   const size: Size = useWindowSize();
 
   const [breakFast, setBreakfast] = useState<any>(null);
@@ -48,4 +48,4 @@ const Products = ({ allProducts }: Props) => {
   );
 };
 
-export default Products;
+export default AllProducts;

@@ -1,12 +1,13 @@
 import Head from "next/head";
 import Header from "../components/Header";
-import Products from "../components/products";
+
 
 import { commerce } from "../lib/commerce";
 import { useEffect } from "react";
 import { getCookie, setCookie } from "typescript-cookie";
 import { useAppDispatch, useAppSelector } from "../useHook/useReduxHook";
 import { loginByCookies } from "../redux/AuthSlice";
+import Products from "../components/AllProducts";
 type Props = {
   data: any;
 };
@@ -37,6 +38,8 @@ export default function Home({ data }: Props) {
     </div>
   );
 }
+
+
 
 export const getStaticProps = async () => {
   const { data } = await commerce.products.list();
