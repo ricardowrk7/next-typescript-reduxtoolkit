@@ -74,13 +74,13 @@ const SignUp = () => {
           <h1 className="my-5 font-bold text-4xl text-gray-600">SignUp</h1>
         </div>
         {state.successMessage && (
-          <div>
-            <h1>{state.successMessage}</h1>
+          <div className="flex justify-center bg-blue-500 rounded ">
+            <h1 className="text-white py-1">{state.successMessage}</h1>
           </div>
         )}
         {state.erroeSignUpMessage && (
           <div className="flex justify-between">
-            <h1 className="text-red-500  text-center">{state.erroeLoginMessage}</h1>
+            <h1 className="text-red-500  text-center">{state.erroeSignUpMessage}</h1>
             <p><Link href="/Login">go to login page</Link></p>
           </div>
         )}
