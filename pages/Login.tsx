@@ -66,9 +66,9 @@ const Login = () => {
             <h1>{state.successMessage}</h1>
           </div>
         )}
-        {state.erroeMessage && (
+        {state.erroeLoginMessage && (
           <div>
-            <h1>{state.erroeMessage}</h1>
+            <h1>{state.erroeLoginMessage}</h1>
           </div>
         )}
         <form onSubmit={handleSubmit}>

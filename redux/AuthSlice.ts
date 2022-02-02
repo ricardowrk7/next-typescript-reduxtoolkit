@@ -10,7 +10,8 @@ type ServerError = string;
 type state = {
   userInfo: user;
   loading: boolean;
-  erroeMessage: string;
+  erroeSignUpMessage: string;
+  erroeLoginMessage: string;
   successMessage: string;
 };
 
@@ -21,7 +22,8 @@ const initialState: state = {
     token: "",
   },
   loading: false,
-  erroeMessage: "",
+  erroeSignUpMessage:"",
+  erroeLoginMessage: "",
   successMessage: "",
 };
 
@@ -70,7 +72,7 @@ const AuthSlice = createSlice({
       state.userInfo.token = "";
       state.userInfo.password = "";
       state.successMessage = "";
-      state.erroeMessage = "";
+      state.erroeSignUpMessage = "";
     },
   },
 
@@ -85,7 +87,7 @@ const AuthSlice = createSlice({
     });
     builder.addCase(signup.rejected, (state, {payload}) => {
       state.loading = false;
-      state.erroeMessage= "your email already is exist";
+      state.erroeSignUpMessage= "your email already is exist";
     });
     builder.addCase(login.pending, (state, { payload }) => {
       state.loading = true;
@@ -97,7 +99,7 @@ const AuthSlice = createSlice({
     });
     builder.addCase(login.rejected, (state, action) => {
       state.loading = false;
-      state.erroeMessage = "you should singup ";
+      state.erroeLoginMessage = "you should singup ";
     });
   },
 });

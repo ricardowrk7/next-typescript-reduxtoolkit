@@ -51,12 +51,12 @@ const Header = ({ bg }: Props) => {
               <ul className="flex justify-end items-center w-full">
                 {userData.userInfo.name ? (
                   <>
-                   <li onClick={logoutUserHandler} className="mr-6 hover:bg-gray-600 hover:text-neutral-50 cursor-pointer px-3 py-1 border-2 border-gray-400 rounded-full">
+                   <li onClick={logoutUserHandler} className="mr-4 sm:mr-7 hover:bg-gray-600 hover:text-neutral-50 cursor-pointer px-3 py-1 border-2 border-gray-400 rounded-full">
                       logout
                     </li>
-                  <li className="mr-6 flex items-center">
+                  <li className="mr-4 sm:mr-7 flex items-center">
                     <span className="mr-2 font-semibold  text-sm sm:text-base ">
-                      welcome {userData.userInfo.name}
+                       {userData.userInfo.name}
                     </span>
                     <span>
                       <UserCircleIcon className="h-8 w-8" />
@@ -65,10 +65,10 @@ const Header = ({ bg }: Props) => {
                   </>
                 ) : (
                   <>
-                    <li className="mr-6 hover:bg-gray-600 hover:text-neutral-50 cursor-pointer px-3 py-1 border-2 border-gray-400 rounded-full">
+                    <li className="mr-4 sm:mr-7 hover:bg-gray-600 hover:text-neutral-50 cursor-pointer px-3 py-1 border-2 border-gray-400 rounded-full">
                       <Link href="SignUp">signup</Link>
                     </li>
-                    <li className="mr-6 hover:bg-gray-600 hover:text-neutral-50 cursor-pointer px-3 py-1 border-2 border-gray-400 rounded-full">
+                    <li className="mr-4 sm:mr-7 hover:bg-gray-600 hover:text-neutral-50 cursor-pointer px-3 py-1 border-2 border-gray-400 rounded-full">
                       <Link href="Login">login</Link>
                     </li>
                   </>
