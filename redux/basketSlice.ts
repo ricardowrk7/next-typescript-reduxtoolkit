@@ -23,18 +23,18 @@ export const basketSlice = createSlice({
     },
     decreaseQty: (state, action:PayloadAction<basketItem> ) => {
       if (action.payload.qty>1) {
-        const index:number = state.cartItems?.findIndex(item=>item.id===action.payload.id)
+        const index:number = state.cartItems?.findIndex(item=>item.id===action.payload.id)!
       if (typeof index !== 'undefined') {
         state.cartItems![index].qty=state.cartItems![index].qty-1
        }
       } else {
         const filteredArray=state.cartItems?.filter(item=>item.id!==action.payload.id)
-        state.cartItems=filteredArray
+        state.cartItems=filteredArray!
       }
 
     },
     increaseQty: (state, action:PayloadAction<basketItem> ) => {
-      const index:number  = state.cartItems?.findIndex(item=>item.id===action.payload.id)
+      const index:number  = state.cartItems?.findIndex(item=>item.id===action.payload.id)!
      if (typeof index !== 'undefined') {
       state.cartItems![index].qty=+state.cartItems![index].qty+1 
      }
