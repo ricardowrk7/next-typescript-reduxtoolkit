@@ -99,7 +99,7 @@ const AuthSlice = createSlice({
     });
     builder.addCase(login.rejected, (state, action) => {
       state.loading = false;
-      state.erroeLoginMessage = "you should singup ";
+      state.erroeLoginMessage = "you didnot signup  ";
     });
   },
 });

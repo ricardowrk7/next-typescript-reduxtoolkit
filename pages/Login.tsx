@@ -8,6 +8,7 @@ import user from "../model/userModel";
 import { useAppDispatch, useAppSelector } from "../useHook/useReduxHook";
 import { login} from "../redux/AuthSlice";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 const Login = () => {
   const dispatch = useAppDispatch();
@@ -67,8 +68,9 @@ const Login = () => {
           </div>
         )}
         {state.erroeLoginMessage && (
-          <div>
-            <h1>{state.erroeLoginMessage}</h1>
+          <div className="flex justify-between">
+            <h1 className="text-red-500">{state.erroeLoginMessage}</h1>
+            <p><Link href="/SignUp">go to signup</Link></p>
           </div>
         )}
         <form onSubmit={handleSubmit}>
