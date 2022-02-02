@@ -51,7 +51,7 @@ const Header = ({ bg }: Props) => {
               <ul className="flex justify-end items-center w-full">
                 {userData.userInfo.name ? (
                   <>
-                   <li onClick={logoutUserHandler} className="mr-4 sm:mr-7 hover:bg-gray-600 hover:text-neutral-50 cursor-pointer px-3 py-1 border-2 border-gray-400 rounded-full">
+                   <li onClick={logoutUserHandler} className="mr-4 sm:mr-7 hover:bg-gray-600 hover:text-neutral-50 cursor-pointer px-2 sm:px-3 py-1 border-2 border-gray-400 rounded-full">
                       logout
                     </li>
                   <li className="mr-4 sm:mr-7 flex items-center">
@@ -59,16 +59,16 @@ const Header = ({ bg }: Props) => {
                        {userData.userInfo.name}
                     </span>
                     <span>
-                      <UserCircleIcon className="h-6 w-6 sm:h-8 sm:w-8" />
+                      <UserCircleIcon className="h-8 w-8 " />
                     </span>
                   </li>
                   </>
                 ) : (
                   <>
-                    <li className="mr-4 sm:mr-7 hover:bg-gray-600 hover:text-neutral-50 cursor-pointer px-3 py-1 border-2 border-gray-400 rounded-full">
+                    <li className="mr-4 sm:mr-7 hover:bg-gray-600 hover:text-neutral-50 cursor-pointer px-2 sm:px-3 py-1 border-2 border-gray-400 rounded-full">
                       <Link href="SignUp">signup</Link>
                     </li>
-                    <li className="mr-4 sm:mr-7 hover:bg-gray-600 hover:text-neutral-50 cursor-pointer px-3 py-1 border-2 border-gray-400 rounded-full">
+                    <li className="mr-4 sm:mr-7 hover:bg-gray-600 hover:text-neutral-50 cursor-pointer px-2 py-1 sm:px-3 border-2 border-gray-400 rounded-full">
                       <Link href="Login">login</Link>
                     </li>
                   </>
@@ -77,7 +77,7 @@ const Header = ({ bg }: Props) => {
                 <li className="cursor-pointer">
                   <Link href="/Basket">
                     <span className="relative">
-                      <ShoppingBagIcon className="h-6 w-6 sm:h-8 sm:w-8" />
+                      <ShoppingBagIcon className="h-8 w-8 " />
                       {state.cartItems?.length! > 0 ? (
                         <span className="absolute -bottom-4 left-6 bg-red-600 text-white  w-5 h-5 flex justify-center items-center rounded-full    ">
                           {state.cartItems?.length}
