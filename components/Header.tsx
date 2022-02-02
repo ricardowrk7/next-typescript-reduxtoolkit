@@ -59,7 +59,7 @@ const Header = ({ bg }: Props) => {
                        {userData.userInfo.name}
                     </span>
                     <span>
-                      <UserCircleIcon className="h-8 w-8" />
+                      <UserCircleIcon className="h-6 w-6 sm:h-8 sm:w-8" />
                     </span>
                   </li>
                   </>
@@ -77,7 +77,7 @@ const Header = ({ bg }: Props) => {
                 <li className="cursor-pointer">
                   <Link href="/Basket">
                     <span className="relative">
-                      <ShoppingBagIcon className="h-8 w-8" />
+                      <ShoppingBagIcon className="h-6 w-6 sm:h-8 sm:w-8" />
                       {state.cartItems?.length! > 0 ? (
                         <span className="absolute -bottom-4 left-6 bg-red-600 text-white  w-5 h-5 flex justify-center items-center rounded-full    ">
                           {state.cartItems?.length}
