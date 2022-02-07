@@ -3,10 +3,10 @@ import Image from "next/image";
 import { addToCart } from "../redux/basketSlice";
 import { useAppDispatch } from "../useHook/useReduxHook";
 
-type Props={
-    foodOptions:any
-}
-const ProductSmallScreen=({foodOptions}:Props)=>{
+type Props<T> = {
+  foodOptions: T[];
+};
+const ProductSmallScreen=<T extends unknown>({foodOptions}:Props<T>)=>{
   const dispatch = useAppDispatch();
   const addToCartHandler = (item: any) => {
     console.log(item);

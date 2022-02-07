@@ -6,11 +6,13 @@ import useWindowSize from "../useHook/useWindowSize";
 import ProductLargeScreen from "./ProductLargeScreen";
 import ProductSmallScreen from "./ProductSmallScreen";
 
-type Props = {
-  allProducts: any;
+ interface Props<T> {
+  allProducts: T[];
 };
 
-const AllProducts = ({ allProducts }: Props) => {
+
+
+const AllProducts =<T extends unknown> ({ allProducts }: Props<T>) => {
   const size: Size = useWindowSize();
 
   const [breakFast, setBreakfast] = useState<any>(null);
@@ -48,4 +50,4 @@ const AllProducts = ({ allProducts }: Props) => {
   );
 };
 
-export default AllProducts;
+export default AllProducts

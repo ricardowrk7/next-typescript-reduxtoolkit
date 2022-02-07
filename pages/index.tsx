@@ -4,15 +4,17 @@ import Header from "../components/Header";
 
 import { commerce } from "../lib/commerce";
 import { useEffect } from "react";
-import { getCookie, setCookie } from "typescript-cookie";
-import { useAppDispatch, useAppSelector } from "../useHook/useReduxHook";
+import { getCookie,  } from "typescript-cookie";
+import { useAppDispatch } from "../useHook/useReduxHook";
 import { loginByCookies } from "../redux/AuthSlice";
-import Products from "../components/AllProducts";
-type Props = {
-  data: any;
+import AllProducts from "../components/AllProducts"
+
+interface Props<T> {
+  data: T[];
 };
 
-export default function Home({ data }: Props) {
+export default function Home<T>({ data }: Props<T>) {
+  console.log(data)
   const dispatch = useAppDispatch();
   useEffect(() => {
     const data = getCookie("userInfo");
@@ -33,7 +35,7 @@ export default function Home({ data }: Props) {
 
       <Header bg={true} />
       <div className="container mx-auto">
-        <Products allProducts={data} />
+        <AllProducts allProducts={data}/>
       </div>
     </div>
   );
@@ -42,7 +44,8 @@ export default function Home({ data }: Props) {
 
 
 export const getStaticProps = async () => {
-  const { data } = await commerce.products.list();
+  const {data} = await commerce.products.list();
+ 
   return {
     props: {
       data,
